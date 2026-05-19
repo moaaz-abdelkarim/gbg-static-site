@@ -1,23 +1,715 @@
-<header class="navbar">
-    <div class="container">
-        <div class="brand-block">
-            <div class="logo">
-                <div class="logo-symbol">gb</div>
-                <div class="logo-type">
-                    <span>GLOBAL</span>
-                    <span>BRANDS</span>
-                    <span>GROUP</span>
-                </div>
-            </div>
-            <div class="header-name">
-                <span class="title">Eng.</span> Moaaz Abdel Karim
-            </div>
-        </div>
-        <nav class="nav-links">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Partners</a>
-            <a href="#">Contact</a>
-        </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Brands Group – Powering Transformation</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c8102e;
+    --dark-red: #8b0000;
+    --gold: #f5a623;
+    --white: #ffffff;
+    --light-gray: #f2f2f2;
+    --dark: #1a1a1a;
+    --mid: #444;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: #fff;
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--dark-red);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .logo-box {
+    width: 44px; height: 44px;
+    background: var(--red);
+    border: 2px solid #fff;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    color: #fff; font-size: 22px;
+    letter-spacing: -1px;
+  }
+  .logo-text {
+    display: flex; flex-direction: column; line-height: 1;
+    color: #fff;
+  }
+  .logo-text span:first-child {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: 2px;
+  }
+  .logo-text span:last-child {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 2px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-search { color: #fff; cursor: pointer; font-size: 18px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--red);
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    padding-top: 64px;
+  }
+  .hero-bg-circles {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .hero-bg-circles::before {
+    content: '';
+    position: absolute;
+    width: 900px; height: 900px;
+    border-radius: 50%;
+    border: 120px solid rgba(255,255,255,0.04);
+    top: 50%; left: 50%;
+    transform: translate(-20%, -50%);
+    animation: rotateSlow 30s linear infinite;
+  }
+  .hero-bg-circles::after {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 80px solid rgba(255,255,255,0.06);
+    top: 50%; left: 55%;
+    transform: translate(-20%, -50%);
+    animation: rotateSlow 20s linear infinite reverse;
+  }
+  @keyframes rotateSlow { to { transform: translate(-20%, -50%) rotate(360deg); } }
+
+  /* Torus shape */
+  .torus-wrap {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 520px; height: 520px;
+    animation: floatY 6s ease-in-out infinite;
+  }
+  @keyframes floatY {
+    0%,100% { transform: translateY(-50%) translateY(0); }
+    50%      { transform: translateY(-50%) translateY(-24px); }
+  }
+  .torus {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: transparent;
+    border: 90px solid transparent;
+    box-shadow:
+      0 0 0 12px rgba(255,200,50,0.25),
+      0 0 0 24px rgba(255,160,0,0.15),
+      0 0 80px 40px rgba(255,120,0,0.3),
+      inset 0 0 60px 20px rgba(255,180,0,0.2);
+    position: relative;
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%,100% { box-shadow: 0 0 0 12px rgba(255,200,50,0.25), 0 0 0 24px rgba(255,160,0,0.15), 0 0 80px 40px rgba(255,120,0,0.3), inset 0 0 60px 20px rgba(255,180,0,0.2); }
+    50%      { box-shadow: 0 0 0 18px rgba(255,200,50,0.35), 0 0 0 36px rgba(255,160,0,0.25), 0 0 120px 60px rgba(255,120,0,0.45), inset 0 0 80px 30px rgba(255,200,0,0.35); }
+  }
+  /* Grid lines on torus */
+  .torus::before {
+    content: '';
+    position: absolute; inset: -90px;
+    border-radius: 50%;
+    background:
+      repeating-conic-gradient(
+        rgba(255,200,100,0.3) 0deg 2deg,
+        transparent 2deg 15deg
+      );
+    mask: radial-gradient(circle, transparent 35%, black 55%, black 65%, transparent 80%);
+    -webkit-mask: radial-gradient(circle, transparent 35%, black 55%, black 65%, transparent 80%);
+  }
+  .torus::after {
+    content: '';
+    position: absolute; inset: -90px;
+    border-radius: 50%;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(255,200,100,0.3) 0px 2px,
+        transparent 2px 20px
+      );
+    mask: radial-gradient(circle, transparent 35%, black 55%, black 65%, transparent 80%);
+    -webkit-mask: radial-gradient(circle, transparent 35%, black 55%, black 65%, transparent 80%);
+  }
+  /* Shadow under torus */
+  .torus-shadow {
+    position: absolute;
+    bottom: -40px; left: 50%;
+    transform: translateX(-50%);
+    width: 340px; height: 30px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 80px;
+    max-width: 620px;
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 8vw, 110px);
+    line-height: 0.92;
+    color: #fff;
+    letter-spacing: 2px;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-title span { color: var(--gold); }
+  .hero-subtitle {
+    margin-top: 24px;
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 440px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-name {
+    margin-top: 32px;
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-left: 4px solid var(--gold);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: fadeUp 0.8s 0.45s ease both;
+    backdrop-filter: blur(4px);
+  }
+  .hero-name span { color: var(--gold); font-size: 11px; display: block; font-weight: 400; letter-spacing: 2px; margin-bottom: 2px; }
+  .hero-cta {
+    margin-top: 36px;
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+  .btn-primary {
+    background: #fff; color: var(--red);
+    padding: 14px 32px;
+    font-weight: 700; font-size: 13px; letter-spacing: 1.5px;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent; color: #fff;
+    border: 2px solid rgba(255,255,255,0.5);
+    padding: 14px 32px;
+    font-weight: 600; font-size: 13px; letter-spacing: 1.5px;
+    text-transform: uppercase; text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { border-color: #fff; transform: translateY(-2px); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--dark);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 4px solid var(--red);
+  }
+  .stat-item {
+    padding: 36px 32px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-item:hover { background: rgba(200,16,46,0.15); }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px; color: var(--red);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 6px;
+  }
+
+  /* ── SERVICES ── */
+  .section { padding: 96px 80px; }
+  .section-label {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 12px; font-weight: 600;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 800; line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 48px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: #e0e0e0;
+  }
+  .service-card {
+    background: #fff;
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 0;
+    background: var(--red);
+    transition: height 0.3s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+  .service-card:hover::before { height: 100%; }
+  .service-icon {
+    width: 52px; height: 52px;
+    background: var(--light-gray);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+    transition: background 0.3s;
+  }
+  .service-card:hover .service-icon { background: var(--red); }
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px; font-weight: 700;
+    margin-bottom: 12px; color: var(--dark);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .service-desc {
+    font-size: 14px; line-height: 1.7;
+    color: var(--mid);
+  }
+  .service-link {
+    display: inline-block; margin-top: 20px;
+    font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--red);
+    text-decoration: none;
+  }
+  .service-link::after { content: ' →'; }
+
+  /* ── ABOUT SPLIT ── */
+  .about-split {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--light-gray);
+  }
+  .about-visual {
+    background: var(--red);
+    position: relative; overflow: hidden;
+    min-height: 500px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-rings {
+    position: relative; width: 300px; height: 300px;
+  }
+  .ring {
+    position: absolute; border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.2);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    animation: expandRing 3s ease-in-out infinite;
+  }
+  .ring:nth-child(1) { width: 80px; height: 80px; animation-delay: 0s; }
+  .ring:nth-child(2) { width: 150px; height: 150px; animation-delay: 0.5s; }
+  .ring:nth-child(3) { width: 220px; height: 220px; animation-delay: 1s; }
+  .ring:nth-child(4) { width: 290px; height: 290px; animation-delay: 1.5s; }
+  @keyframes expandRing {
+    0%,100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
+  }
+  .ring-center {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; color: #fff;
+  }
+
+  .about-content {
+    padding: 80px 64px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .about-content p {
+    font-size: 15px; line-height: 1.8; color: var(--mid);
+    margin-bottom: 20px;
+  }
+  .about-content strong { color: var(--red); }
+
+  /* ── CLIENTS ── */
+  .clients-section { background: #fff; }
+  .clients-strip {
+    display: flex; align-items: center; justify-content: center;
+    gap: 64px; flex-wrap: wrap; padding: 48px 80px;
+    border-top: 1px solid #eee;
+  }
+  .client-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 2px;
+    color: #ccc;
+    transition: color 0.2s;
+    cursor: default;
+  }
+  .client-logo:hover { color: var(--red); }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--dark-red);
+    padding: 96px 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: center;
+  }
+  .contact-section .section-title { color: #fff; margin-bottom: 16px; }
+  .contact-section p { color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.7; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .contact-form input,
+  .contact-form textarea {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 14px 18px;
+    color: #fff; font-family: 'Barlow', sans-serif; font-size: 14px;
+    outline: none; transition: border-color 0.2s;
+    resize: none;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form textarea { min-height: 120px; }
+  .contact-form button {
+    background: var(--gold); color: var(--dark);
+    border: none; padding: 16px 36px;
+    font-weight: 700; font-size: 13px; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    align-self: flex-start;
+  }
+  .contact-form button:hover { background: #fff; transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 48px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 24px;
+    border-top: 4px solid var(--red);
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; color: #fff; letter-spacing: 2px;
+  }
+  .footer-brand span { color: var(--red); }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none; font-size: 12px;
+    letter-spacing: 1px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    width: 100%;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px;
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeUp 1s 1s ease both;
+  }
+  .scroll-line {
+    width: 40px; height: 1px; background: rgba(255,255,255,0.3);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .hero-content { padding: 0 32px; }
+    .torus-wrap { width: 280px; height: 280px; right: -40px; }
+    .section { padding: 64px 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    .about-split { grid-template-columns: 1fr; }
+    .contact-section { grid-template-columns: 1fr; padding: 64px 32px; gap: 40px; }
+    footer { padding: 32px; flex-direction: column; align-items: flex-start; }
+    .clients-strip { gap: 32px; padding: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-box">GB</div>
+    <div class="logo-text">
+      <span>Global Brands</span>
+      <span>Group</span>
     </div>
-</header>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services &amp; Solutions</a></li>
+    <li><a href="#">Partners</a></li>
+    <li><a href="#">Clients</a></li>
+    <li><a href="#">Resources</a></li>
+    <li><a href="#">Careers</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <span class="nav-search">⌕</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-circles"></div>
+
+  <div class="torus-wrap">
+    <div class="torus"></div>
+    <div class="torus-shadow"></div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Global Brands Group — Technology &amp; Consulting</p>
+    <h1 class="hero-title">Powering<br><span>Trans</span>formation</h1>
+    <p class="hero-subtitle">
+      We partner with enterprises worldwide to accelerate digital change,
+      delivering solutions that are bold, scalable, and built to last.
+    </p>
+    <div class="hero-name">
+      <span>Presented by</span>
+      Eng. Moaaz Abdel Karim
+    </div>
+    <div class="hero-cta">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span class="scroll-line"></span>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">20+</div>
+    <div class="stat-label">Years of Excellence</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Global Clients</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">48</div>
+    <div class="stat-label">Countries Served</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">3K+</div>
+    <div class="stat-label">Experts Worldwide</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <p class="section-label">What We Do</p>
+  <h2 class="section-title">Services &amp; Solutions</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">☁️</div>
+      <div class="service-name">Cloud Transformation</div>
+      <p class="service-desc">End-to-end cloud strategy, migration, and managed services that modernize your infrastructure for agility and scale.</p>
+      <a href="#" class="service-link">Learn More</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔒</div>
+      <div class="service-name">Cybersecurity</div>
+      <p class="service-desc">Proactive threat intelligence, risk management, and security operations that protect what matters most to your business.</p>
+      <a href="#" class="service-link">Learn More</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <div class="service-name">Data &amp; Analytics</div>
+      <p class="service-desc">Turn raw data into strategic advantage with AI-powered insights, real-time dashboards, and predictive analytics.</p>
+      <a href="#" class="service-link">Learn More</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <div class="service-name">AI &amp; Automation</div>
+      <p class="service-desc">Intelligent automation and machine learning solutions that streamline operations and open new revenue streams.</p>
+      <a href="#" class="service-link">Learn More</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌐</div>
+      <div class="service-name">Digital Experience</div>
+      <p class="service-desc">Customer-centric digital products, portals, and platforms built for performance, accessibility, and delight.</p>
+      <a href="#" class="service-link">Learn More</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏗️</div>
+      <div class="service-name">Enterprise Architecture</div>
+      <p class="service-desc">Strategic blueprints and technology roadmaps that align your IT ecosystem with long-term business objectives.</p>
+      <a href="#" class="service-link">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-split" id="about">
+  <div class="about-visual">
+    <div class="about-rings">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring-center">GBG</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label">About GBG</p>
+    <h2 class="section-title" style="margin-bottom:24px;">Built for the<br>Future of Business</h2>
+    <p>
+      Global Brands Group is a <strong>full-service technology and business transformation partner</strong>
+      trusted by Fortune 500 companies and ambitious startups alike.
+      With over two decades of experience, we bring clarity to complexity.
+    </p>
+    <p>
+      Our multidisciplinary teams combine deep industry knowledge with cutting-edge technical expertise —
+      delivering outcomes that are measurable, repeatable, and <strong>built to scale</strong>.
+    </p>
+    <a href="#contact" class="btn-primary" style="align-self:flex-start; margin-top:12px;">Work With Us</a>
+  </div>
+</div>
+
+<!-- CLIENTS -->
+<section class="clients-section section" id="clients" style="padding-bottom:0;">
+  <p class="section-label" style="text-align:center;">Trusted By</p>
+  <h2 class="section-title" style="text-align:center;">Our Partners &amp; Clients</h2>
+  <div class="clients-strip">
+    <span class="client-logo">MICROSOFT</span>
+    <span class="client-logo">ORACLE</span>
+    <span class="client-logo">SAP</span>
+    <span class="client-logo">CISCO</span>
+    <span class="client-logo">IBM</span>
+    <span class="client-logo">DELL</span>
+    <span class="client-logo">AWS</span>
+    <span class="client-logo">GOOGLE</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div>
+    <p class="section-label" style="color:rgba(255,255,255,0.6);">Get In Touch</p>
+    <h2 class="section-title">Let's Build<br>Something Bold</h2>
+    <p>
+      Whether you're launching a transformation initiative or solving a specific business challenge,
+      our team is ready to help. Reach out and let's start the conversation.
+    </p>
+    <div style="margin-top:32px; display:flex; flex-direction:column; gap:12px;">
+      <p style="color:rgba(255,255,255,0.8); font-size:14px;">📧 info@globalbrandsgroup.com</p>
+      <p style="color:rgba(255,255,255,0.8); font-size:14px;">📞 +1 (800) GBG-GROUP</p>
+      <p style="color:rgba(255,255,255,0.8); font-size:14px;">🌍 globalbrandsgroup.com</p>
+    </div>
+  </div>
+  <form class="contact-form" onsubmit="return false;">
+    <input type="text" placeholder="Full Name">
+    <input type="email" placeholder="Email Address">
+    <input type="text" placeholder="Company">
+    <textarea placeholder="Tell us about your project..."></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Global <span>Brands</span> Group</div>
+  <div class="footer-links">
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Partners</a>
+    <a href="#">Careers</a>
+    <a href="#">Privacy</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="footer-copy">
+    <span>© 2025 Global Brands Group. All rights reserved.</span>
+    <span style="color:rgba(255,255,255,0.5);">Designed by <strong style="color:#f5a623;">Eng. Moaaz Abdel Karim</strong></span>
+  </div>
+</footer>
+
+</body>
+</html>
